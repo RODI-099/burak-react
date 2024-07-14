@@ -12,19 +12,19 @@ export default function Statistics() {
                     <Box className="static-text">Restaurant</Box>
                 </Stack>
 
-                <Divider height="64" width="2" bg="#E308D" />
+                <Divider height="64" width="2" bg="#E3C08D" />
 
                 <Stack className="static-box">
                     <Box className="static-num">8</Box>
                     <Box className="static-text">Ecperience</Box>
                 </Stack>
-                <Divider height="64" width="2" bg="#E308D" />
+                <Divider height="64" width="2" bg="#E3C08D" />
 
                 <Stack className="static-box">
                     <Box className="static-num">50+</Box>
                     <Box className="static-text">Menu</Box>
                 </Stack>
-                <Divider height="64" width="2" bg="#E308D" />
+                <Divider height="64" width="2" bg="#E3C08D" />
 
                 <Stack className="static-box">
                     <Box className="static-num">200+</Box>
