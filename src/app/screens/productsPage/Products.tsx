@@ -145,7 +145,7 @@ export default function Products() {
                           </span>
                           <div className="product-desc">
                             <MonetizationOnIcon className={"dollar-icon"} />
-                            12
+                            15
                           </div>
                         </Box>
                       </Stack>
