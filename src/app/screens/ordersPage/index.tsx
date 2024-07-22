@@ -63,14 +63,14 @@ export default function OrdersPage() {
                 />
               </Box>
             </Box>
-            <Box className={"user-name"}>Justin</Box>
+            <Box className={"user-name"}>RODI</Box>
             <Box className={"user-type"}>USER</Box>
             <Divider height="2" width="360" bg="rgb(161, 161, 161)" />
             <div className="user-location-wrapper">
               <Box>
                 <LocationOnIcon />
               </Box>
-              <Box className={"user-address"}>Seoul, South Korea</Box>
+              <Box className={"user-address"}>Yeosu, South Korea</Box>
             </div>
           </Stack>
 
