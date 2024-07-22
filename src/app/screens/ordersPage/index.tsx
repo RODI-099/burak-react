@@ -30,8 +30,16 @@ export default function OrdersPage() {
                   aria-label="basic tabs example"
                   className={"table_list"}
                 >
-                  <Tab label="PAUSED ORDERS" value={"1"} />
-                  <Tab label="PROCESS ORDERS" value={"2"} />
+                  <Tab
+                    style={{ marginRight: 30 }}
+                    label="PAUSED ORDERS"
+                    value={"1"}
+                  />
+                  <Tab
+                    style={{ marginRight: 30 }}
+                    label="PROCESS ORDERS"
+                    value={"2"}
+                  />
                   <Tab label="FINISHED ORDERS" value={"3"} />
                 </Tabs>
               </Box>
