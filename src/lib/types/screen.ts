@@ -4,6 +4,7 @@ import { Product } from "./product";
 
 /** REACT APP STATE */
 export interface AppRootState {
+    popularDishes: any;
     homePage: HomePageState;
     // productsPage: ProductsPageState;
 }
