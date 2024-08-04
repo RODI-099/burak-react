@@ -1,36 +1,59 @@
 import React from "react";
-import { Box, Container, Stack } from "@mui/material";
-import { CssVarsProvider } from '@mui/joy';
+import { Container, Stack, Box } from "@mui/material";
+import Card from "@mui/joy/Card";
+import { CssVarsProvider, Typography } from "@mui/joy";
+import CardOverflow from "@mui/joy/CardOverflow";
+import AspectRatio from "@mui/joy/AspectRatio";
 
-const activeUsers = [
-    {memberNick: "Martin", memberImage: "/img/martin.webp" },
-    {memberNick: "Justin", memberImage: "/img/justin.webp" },
-    {memberNick: "Rose", memberImage: "/img/rose.webp" },
-    {memberNick: "Nusret", memberImage: "/img/nusret.webp" },
-];
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveTopUsers } from "./selector";
+import { serverApi } from "../../../lib/config";
+import { Member } from "../../../lib/types/member";
+
+/** REDUX  SELECTOR */
+const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
+  topUsers,
+}));
 
 export default function ActiveUsers() {
-    return (
+  const { topUsers } = useSelector(topUsersRetriever);
+  return (
     <div className={"active-users-frame"}>
-        <Container>
-            <Stack className={"main"}>
-                <Box className={"category-title"}>Active Users</Box>
-                <Stack className={"cards-frame"}>
-                    <CssVarsProvider>
-                        {activeUsers.length !== 0 ? (
-                            activeUsers.map((ele, index) => {
-                                return (
-                                    <Stack className={"card"}>
-                                        <img src={ele.memberImage} />
-                                        <div className={"card-name"}>{ele.memberNick}</div>
-                                    </Stack>
-                                );
-                            }) ) : (<Box className={"no-data"}> No Active Users!</Box>)}
-                    </CssVarsProvider>
-                </Stack>
-            </Stack>
-        </Container>
+      <Container>
+        <Stack className={"main"}>
+          <Box className={"category-title"}>Active Users</Box>
+          <Stack className={"cards-frame"}>
+            <CssVarsProvider>
+              {topUsers.length !== 0 ? (
+                topUsers.map((member: Member) => {
+                  const imagePath = `${serverApi}/${member.memberImage}`;
+                  return (
+                    <Card
+                      key={member._id}
+                      variant="outlined"
+                      className={"card"}
+                    >
+                      <CardOverflow>
+                        <AspectRatio ratio={"1"}>
+                          <img src={imagePath} alt="" />
+                        </AspectRatio>
+                      </CardOverflow>
+                      <CardOverflow variant="soft" className={"member-detail"}>
+                        <Typography className={"member-nickname"}>
+                          {member.memberNick}
+                        </Typography>
+                      </CardOverflow>
+                    </Card>
+                  );
+                })
+              ) : (
+                <Box className="no-data">No Active Users!</Box>
+              )}
+            </CssVarsProvider>
+          </Stack>
+        </Stack>
+      </Container>
     </div>
-    );
-
+  );
 }
