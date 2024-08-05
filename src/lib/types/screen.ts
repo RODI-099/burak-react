@@ -4,9 +4,9 @@ import { Product } from "./product";
 
 /** REACT APP STATE */
 export interface AppRootState {
-    popularDishes: any;
+    //popularDishes: any;
     homePage: HomePageState;
-    // productsPage: ProductsPageState;
+    productsPage: ProductsPageState;
 }
 /* HOMEPAGE */
 export interface HomePageState {
@@ -17,5 +17,10 @@ export interface HomePageState {
 }
 
 /* PRODUCT PAGE */
+export interface ProductsPageState {
+    restaurant: Member | null;
+    chosenProduct: Product | null;
+    products: Product[];
+}
 
 /* ORDERS PAGE */
