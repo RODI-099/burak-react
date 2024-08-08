@@ -39,7 +39,7 @@ export default function Products() {
   const [productSearch, setProductSearch ] = useState<ProductInquiry>({page: 1,
     limit: 8,
     order: "createdAt",
-    //productCollection: ProductCollection.DISH,
+    productCollection: ProductCollection.DISH,
     search: "",});
 
     const [searchText, setSearchText] = useState<string>("");
