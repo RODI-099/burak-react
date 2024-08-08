@@ -38,7 +38,7 @@ export default function ChosenProduct() {
   const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
   const {chosenProduct} = useSelector(chosenProductRetriever);
   const {restaurant} = useSelector(restaurantRetriever);
-  console.log("productId:", productId);
+  //console.log("productId:", productId);
 
   useEffect(() => {
     const product = new ProductService();
@@ -107,3 +107,5 @@ export default function ChosenProduct() {
     </div>
   );
 }
+
+

@@ -9,6 +9,7 @@ import "../../../css/products.css";
 export default function ProductsPage() {
 
    const products = useRouteMatch();
+   console.log("product:", products);
 
     return <div className={"products-page"}>
       <Switch>

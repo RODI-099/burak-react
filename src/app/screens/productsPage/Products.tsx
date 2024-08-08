@@ -36,10 +36,10 @@ export default function Products() {
   
   const{setProducts} = actionDispatch(useDispatch());
   const {products} = useSelector(productsRetriever);
-  const [productSearch, setProductSearch ]= useState<ProductInquiry>({page: 1,
+  const [productSearch, setProductSearch ] = useState<ProductInquiry>({page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+    //productCollection: ProductCollection.DISH,
     search: "",});
 
     const [searchText, setSearchText] = useState<string>("");
@@ -48,8 +48,8 @@ export default function Products() {
   useEffect(() => {
     const product = new ProductService();
     product.getProducts(productSearch)
-    .then(data => setProducts(data))
-    .catch(err => console.log(err))
+    .then((data) => setProducts(data))
+    .catch((err) => console.log(err))
 
   }, [productSearch]);
 
@@ -58,7 +58,7 @@ export default function Products() {
       productSearch.search = "";
       setProductSearch({...productSearch});
     }
-  })
+  },[searchText]);
 
   // HANDLERS
 
@@ -129,24 +129,24 @@ export default function Products() {
               <Stack className={"dishes-filter-box"}>
                 <Button
                   variant={"contained"}
-                  color={productSearch.order === "createdAt" ?"primary" : "secondary"}
                   className={"order"}
+                  color={productSearch.order === "createdAt" ?"primary" : "secondary"}
                   onClick={() => searchOrderHandler("createdAt")}
                 >
                   New
                 </Button>
                 <Button
                   variant={"contained"}
-                  color={productSearch.order === "productPrice" ?"primary" : "secondary"}
                   className={"order"}
+                  color={productSearch.order === "productPrice" ? "primary" : "secondary"}
                   onClick={() => searchOrderHandler("productPrice")}
                 >
                   Price
                 </Button>
                 <Button
                   variant={"contained"}
-                  color={productSearch.order === "productViews" ?"primary" : "secondary"}
                   className={"order"}
+                  color={productSearch.order === "productViews" ? "primary" : "secondary"}
                   onClick={() => searchOrderHandler("productViews")}
                 >
                   Views
@@ -198,7 +198,7 @@ export default function Products() {
                 {products.length !== 0 ? (
                   products.map((product: Product) => {
                     const imagePath = `${serverApi}/${product.productImages[0]}`;
-                    const sizeVolume = product.productCollection === ProductCollection.DRINK ? product.productVolume + " litre" : product.productSize + "size"
+                    const sizeVolume = product.productCollection === ProductCollection.DRINK ? product.productVolume + " litre" : product.productSize + "size";
                     return (
                       <Stack key={product._id} className={"product-card"} onClick={() => chooseDishHandler(product._id)}>
                         <Stack
@@ -302,3 +302,4 @@ export default function Products() {
       </div>
     );
   }
+

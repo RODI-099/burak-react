@@ -11,7 +11,7 @@ const initialState: ProductsPageState = {
 }
 
 const productsPageSlice = createSlice({
-    name: "productspage",
+    name: "productsPage",
     initialState,
     reducers: {
         setRestaurant: (state, action) => {
