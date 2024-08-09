@@ -34,17 +34,18 @@ export default function HomePage() {
 
     // Backend server data fetch => Data
     const product = new ProductService();
+    
     product.getProducts({
       page: 1,
       limit: 4,
-      order: "productView",
+      order: "productViews",
       productCollection: ProductCollection.DISH,
     })
-    .then(data => {
+    .then((data) => {
       console.log("data passed here:", data)
       setPopularDishes(data);
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 
     product.getProducts({
       page: 1,
@@ -53,7 +54,7 @@ export default function HomePage() {
       productCollection: ProductCollection.DISH,
     })
     .then((data) => setNewDishes(data))
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 
 
 
