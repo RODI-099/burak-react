@@ -10,29 +10,31 @@ interface HomeNavbarProps {
     onRemove: (item: CartItem) => void;
     onDelete: (item: CartItem) => void;
     onDeleteAll: () => void;
+    setSignupOpen: (isOpen: boolean) => void;
+    setLoginOpen: (isOpen: boolean) => void;
+
 }
 export default function HomeNavbar(props: HomeNavbarProps) {
-    const { cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props;
+    const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen } = props;
     const authMember = null;
 
-    const [count, setCount] = useState<number>(0);
-    const [value, setvalue] = useState<boolean>(true)
+    // const [count, setCount] = useState<number>(0);
+    // const [value, setvalue] = useState<boolean>(true)
 
-    useEffect(() => {
-        console.log("componentDidMount"); // Data Fetch
-        setCount(count + 1)
+    // useEffect(() => {
+    //     console.log("componentDidMount"); // Data Fetch
+    //     setCount(count + 1)
 
-        return () => {
-        console.log("componentWillUnmount");
-        }
-    }, [value]) // Array dependency
+    //     return () => {
+    //     console.log("componentWillUnmount");
+    //     }
+    // }, [value]) // Array dependency
 
 
      // HANDLERS
-    const buttonHandler = () => {
-        setvalue(!value);
+    
 
-    }
+    
     return (
          <div className="home-navbar">
     <Container className="navbar-container">
@@ -66,7 +68,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             {/* BASKET */}
             <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} onDelete={onDelete} onDeleteAll={onDeleteAll}/>
 
-            {!authMember ? (<Box> <Button variant="contained" className="login-button">Login</Button></Box>) : (<img className="user-avatar"
+            {!authMember ? (<Box> <Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}>Login</Button></Box>) : (<img className="user-avatar"
             src={"/icons/default-user.svg"}
             aria-haspopup={"true"}
             />)}
@@ -77,9 +79,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             <Stack className={"detail"}>
                 <Box className={"head-main-txt"}>World`s Most Delicios Cousine</Box>
                 <Box className={"wel-txt"}>The Choice, not just a choice</Box>
-                <Box className={"service-txt"}>{count} hours service</Box>
+                <Box className={"service-txt"}>24 hours service</Box>
                 <Box className={"signup"}>
-                    {!authMember ? (<Button variant={"contained"} className="signup-button" onClick={buttonHandler}>SIGN UP</Button>) : null}
+                    {!authMember ? (<Button variant={"contained"} className="signup-button" onClick={() => setSignupOpen(true)}>SIGN UP</Button>) : null}
                 </Box>
                 
             </Stack>
