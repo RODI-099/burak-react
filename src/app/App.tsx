@@ -15,14 +15,20 @@ import HelpPage  from './screens/helpPage';
 import Test from './screens/Test';
 import { idText } from 'typescript';
 import useBasket from './hooks/useBasket';
+import AuthenticationModal from './components/auth';
 
 function App() {
 
   const location = useLocation();
   console.log("locatiob:", location)
   const {cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
+  const [signupOpen, setSignupOpen] =useState<boolean>(false);
+  const [loginOpen, setLoginOpen] =useState<boolean>(false);
 
   // HANDLERS
+
+  const handleSignUpClose = () => setSignupOpen(false);
+  const handleLoginClose = () => setLoginOpen(false);
 
 
 
@@ -48,6 +54,13 @@ function App() {
           </Route>
         </Switch>
         <Footer/>
+
+        <AuthenticationModal 
+        signupOpen={signupOpen}
+        loginOpen={loginOpen}
+        handleLoginClose={handleLoginClose}
+        handleSignupClose={handleSignUpClose}
+        />
       </>
   );
 }
@@ -58,7 +71,6 @@ function App() {
 
 
 export default App;
-function setCartItems(cartUpdate: any[]) {
-  throw new Error('Function not implemented.');
-}
+
+
 
