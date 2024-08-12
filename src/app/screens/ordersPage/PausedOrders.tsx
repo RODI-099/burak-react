@@ -15,7 +15,9 @@ import { Order, OrderItem } from "../../../lib/types/order";
   const pausedOrdersRetriever = createSelector(retrievePausedOrders, (pausedOrders) => ({pausedOrders}))
 
 export default function PausedOrders() {
-  const { pausedOrders} = useSelector(pausedOrdersRetriever)
+  const { pausedOrders} = useSelector(pausedOrdersRetriever);
+
+  // HANDLERS
   return (
     <TabPanel className={"table-panel"} value={"1"}>
       <Stack>
